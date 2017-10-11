@@ -64,13 +64,13 @@
   file.managed:
     - user: ubuntu
     - group: ubuntu
-    - source: salt://ovp/files/nginx/server.conf
+    - source: salt://ovp/files/nginx/secure.conf
 
 /home/ubuntu/api/nginx.conf.d/unsecure.conf:
   file.managed:
     - user: ubuntu
     - group: ubuntu
-    - source: salt://ovp/files/nginx/server.conf
+    - source: salt://ovp/files/nginx/unsecure.conf
 
 /home/ubuntu/api/repository:
   file.directory:
