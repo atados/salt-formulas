@@ -4,19 +4,73 @@
     - group: ubuntu
 
 /home/ubuntu/api/deploy:
-  file.directory:
+  file.recurse:
     - user: ubuntu
     - group: ubuntu
+    - source: salt://ovp/files/deploy
 
 /home/ubuntu/api/logs:
   file.directory:
     - user: ubuntu
     - group: ubuntu
 
-/home/ubuntu/api/nginx:
+/home/ubuntu/api/logs/nginx:
   file.directory:
     - user: ubuntu
     - group: ubuntu
+
+/home/ubuntu/api/logs/nginx/http:
+  file.directory:
+    - user: ubuntu
+    - group: ubuntu
+
+/home/ubuntu/api/logs/nginx/https:
+  file.directory:
+    - user: ubuntu
+    - group: ubuntu
+
+/home/ubuntu/api/nginx.conf.d:
+  file.directory:
+    - user: ubuntu
+    - group: ubuntu
+
+/home/ubuntu/api/nginx.conf.d/partials:
+  file.directory:
+    - user: ubuntu
+    - group: ubuntu
+
+/home/ubuntu/api/nginx.conf.d/partials/upstream:
+  file.directory:
+    - user: ubuntu
+    - group: ubuntu
+
+/home/ubuntu/api/nginx.conf.d/partials/location:
+  file.directory:
+    - user: ubuntu
+    - group: ubuntu
+
+/home/ubuntu/api/nginx.conf.d/partials/log:
+  file.directory:
+    - user: ubuntu
+    - group: ubuntu
+
+/home/ubuntu/api/nginx.conf.d/server.conf:
+  file.managed:
+    - user: ubuntu
+    - group: ubuntu
+    - source: salt://ovp/files/nginx/server.conf
+
+/home/ubuntu/api/nginx.conf.d/secure.conf:
+  file.managed:
+    - user: ubuntu
+    - group: ubuntu
+    - source: salt://ovp/files/nginx/server.conf
+
+/home/ubuntu/api/nginx.conf.d/unsecure.conf:
+  file.managed:
+    - user: ubuntu
+    - group: ubuntu
+    - source: salt://ovp/files/nginx/server.conf
 
 /home/ubuntu/api/repository:
   file.directory:
@@ -28,13 +82,7 @@
     - user: ubuntu
     - group: ubuntu
 
-/home/ubuntu/api/deploy/deploy.sh:
-  file.managed:
-    - source: salt://ovp/files/deploy/deploy.sh
-    - user: ubuntu
-    - group: ubuntu
-    - mode: 755
-
+# Project settings 
 /home/ubuntu/api/run/env.sh:
   file.managed:
     - user: ubuntu

@@ -64,18 +64,24 @@ python manage.py compilemessages > /dev/null
 
 # Run API
 echo ":: Starting new server"
+cd ~/api/run/run.$PRJ/code/api/server
 pm2 start ./server.sh --name api-$PRJ > /dev/null
 
 # Copy nginx config
 #echo ":: Swap nginx config"
-rm ~/nginx/partials/location/api.gpa.com.br.* 
-rm ~/nginx/partials/upstream/api.gpa.com.br.* 
+rm ~/api/nginx.conf.d/partials/location/api.beta.atados.com.br.* 
+rm ~/api/nginx.conf.d/partials/upstream/api.beta.atados.com.br.* 
+rm ~/api/nginx.conf.d/partials/log/* 
 
-cp ~/deploy/api/location.conf ~/nginx/partials/location/api.gpa.com.br.$PRJ.conf
-cp ~/deploy/api/upstream.conf ~/nginx/partials/upstream/api.gpa.com.br.$PRJ.conf
+cp ~/api/deploy/nginx/location.conf ~/api/nginx.conf.d/partials/location/api.beta.atados.com.br.$PRJ.conf
+cp ~/api/deploy/nginx/upstream.conf ~/api/nginx.conf.d/partials/upstream/api.beta.atados.com.br.$PRJ.conf
+cp ~/api/deploy/nginx/unsecure_logs.conf ~/api/nginx.conf.d/partials/log/unsecure_logs.$PRJ.conf
+cp ~/api/deploy/nginx/secure_logs.conf ~/api/nginx.conf.d/partials/log/secure_logs.$PRJ.conf
 
-perl -pi -e 's/{PRJ}/$ENV{PRJ}/g' ~/nginx/partials/location/api.gpa.com.br.$PRJ.conf
-perl -pi -e 's/{PRJ}/$ENV{PRJ}/g' ~/nginx/partials/upstream/api.gpa.com.br.$PRJ.conf
+perl -pi -e 's/{PRJ}/$ENV{PRJ}/g' ~/api/nginx.conf.d/partials/location/api.beta.atados.com.br.$PRJ.conf
+perl -pi -e 's/{PRJ}/$ENV{PRJ}/g' ~/api/nginx.conf.d/partials/upstream/api.beta.atados.com.br.$PRJ.conf
+perl -pi -e 's/{PRJ}/$ENV{PRJ}/g' ~/api/nginx.conf.d/partials/log/unsecure_logs.$PRJ.conf
+perl -pi -e 's/{PRJ}/$ENV{PRJ}/g' ~/api/nginx.conf.d/partials/log/secure_logs.$PRJ.conf
 
 # Grab workers pid
 workers=`ps -aux | grep "nginx: worker" | sed "$ d" | awk '{print $2}'`
