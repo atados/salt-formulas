@@ -3,7 +3,7 @@ include:
 
 elasticsearch_repo:
   pkgrepo.managed:
-    - humanname: Elasticsearch 2.x
+    - humanname: Elasticsearch 2.4
     - name: deb http://packages.elastic.co/elasticsearch/2.x/debian stable main
     - dist: stable
     - file: /etc/apt/sources.list.d/elasticsearch.list
@@ -13,7 +13,7 @@ elasticsearch_repo:
 elasticsearch_pkg:
   pkg.installed:
   - name: elasticsearch
-  - version: 2.4.5
+  - version: 2.4.6
   - require:
     - pkgrepo: elasticsearch_repo
     - pkg: java8_pkg
