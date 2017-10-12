@@ -9,6 +9,22 @@
     - group: ubuntu
     - source: salt://ovp/files/deploy
 
+/home/ubuntu/api/certbot:
+  file.recurse:
+    - user: ubuntu
+    - group: ubuntu
+    - source: salt://ovp/files/certbot
+
+/home/ubuntu/api/repository:
+  file.directory:
+    - user: ubuntu
+    - group: ubuntu
+
+/home/ubuntu/api/run:
+  file.directory:
+    - user: ubuntu
+    - group: ubuntu
+
 /home/ubuntu/api/logs:
   file.directory:
     - user: ubuntu
@@ -72,16 +88,6 @@
     - group: ubuntu
     - source: salt://ovp/files/nginx/unsecure.conf
 
-/home/ubuntu/api/repository:
-  file.directory:
-    - user: ubuntu
-    - group: ubuntu
-
-/home/ubuntu/api/run:
-  file.directory:
-    - user: ubuntu
-    - group: ubuntu
-
 # Project settings 
 /home/ubuntu/api/run/env.sh:
   file.managed:
@@ -92,3 +98,5 @@
   file.managed:
     - user: ubuntu
     - group: ubuntu
+    - contents:
+      - production

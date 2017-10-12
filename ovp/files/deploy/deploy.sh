@@ -64,8 +64,8 @@ python manage.py compilemessages > /dev/null
 
 # Run API
 echo ":: Starting new server"
-cd ~/api/run/run.$PRJ/code/api/server
-pm2 start ./server.sh --name api-$PRJ > /dev/null
+cd ~/api/run/run.$PRJ/code/api
+pm2 start ./server/server.sh --name api-$PRJ > /dev/null
 
 # Copy nginx config
 #echo ":: Swap nginx config"

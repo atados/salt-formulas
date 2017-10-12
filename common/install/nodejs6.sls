@@ -25,4 +25,3 @@ install_node:
     - pkgs:
       - nodejs
       - yarn
-      - npm
