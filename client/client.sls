@@ -1,23 +1,20 @@
 include:
-  - .install.gettext
   - ..common.install.git
   - ..common.install.python3
   - ..common.install.pm2
   - ..common.install.nginx
-  # - .scripts.certify
   - ..common.install.certbot
-  - .install.java8
-  - .install.es2
   - .install.structure
-  # - .scripts.deploy
+  - .install.babel-node
 
 install_api_repo:
   git.latest:
-    - name: https://github.com/atados/atados-ovp.git
+    - name: https://github.com/atados/new-client.git
     - force_checkout: True
     - force_reset: True
     - force_clone: True
-    - target: /home/ubuntu/api/repository
+    - target: /home/ubuntu/client/repository
     - branch: master
     - user: ubuntu 
     - submodules: True
+
