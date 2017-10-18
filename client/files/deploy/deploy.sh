@@ -57,16 +57,16 @@ yarn build-release > /dev/null
 # mkdir -p build/src/cms/pages
 # cp -r ../../$LAST/code/build/src/cms/pages/* build/src/cms/pages/
 
-# Run www
+# Run client
 cd build
 echo ":: Starting new server"
 printf '#!/bin/bash\n' > unix-server.sh
-printf "PORT=/tmp/www.run.$PRJ.socket node ./server.js" >> unix-server.sh
+printf "PORT=/tmp/client.run.$PRJ.socket node ./server.js" >> unix-server.sh
 pm2 start ./unix-server.sh --name client-$PRJ -- --prj=$PRJ > /dev/null
 
 # Wait until server is up
 
-# while [ `curl --unix-socket /tmp/www.run.$PRJ.socket http:/api/status -s -o /dev/null -w "%{http_code}"` != "200" ]
+# while [ `curl --unix-socket /tmp/client.run.$PRJ.socket http:/api/status -s -o /dev/null -w "%{http_code}"` != "200" ]
 # do
 #   sleep 1
 # done
@@ -110,7 +110,7 @@ find ./ -maxdepth 1 -name "run.*" -printf "%f\n" | sort | sed "$ d" | xargs rm -
 
 # Remove old sockets
 cd /tmp
-find ./ -maxdepth 1 -name "www.run.*" -printf "%f\n" | sort | sed "$ d" | xargs rm -f >/dev/null 2>&1
+find ./ -maxdepth 1 -name "client.run.*" -printf "%f\n" | sort | sed "$ d" | xargs rm -f >/dev/null 2>&1
 
 # Dump log
 cd ~/client/run
