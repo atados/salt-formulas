@@ -4,11 +4,11 @@ include:
   - ..common.install.python3
   - ..common.install.pm2
   - ..common.install.nginx
-  # - .scripts.certify
   - ..common.install.certbot
   - .install.java8
   - .install.es2
   - .install.structure
+  # - .scripts.certify
   # - .scripts.deploy
 
 install_api_repo:

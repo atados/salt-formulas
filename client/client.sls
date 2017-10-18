@@ -6,6 +6,8 @@ include:
   - ..common.install.certbot
   - .install.structure
   - .install.babel-node
+  # - .scripts.certify
+  # - .scripts.deploy
 
 install_api_repo:
   git.latest:
