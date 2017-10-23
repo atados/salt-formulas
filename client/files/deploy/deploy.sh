@@ -47,7 +47,7 @@ LAST=`find ./ -maxdepth 1 -name "run.*" -printf "%f\n" | sort | sed "$ d" | tail
 cd ~/client/run/run.$PRJ/code 
 cp -r ../../$LAST/code/node_modules .
 
-yarn install > /dev/null
+yarn install --production=false > /dev/null
 
 # Building
 echo ":: Building"
