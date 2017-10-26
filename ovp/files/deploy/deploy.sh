@@ -61,6 +61,7 @@ cd ~/api/run/run.$PRJ/code/api
 python manage.py migrate > /dev/null
 python manage.py collectstatic --noinput > /dev/null
 python manage.py compilemessages > /dev/null
+python manage.py rebuild_index --noinput > /dev/null
 
 # Run API
 echo ":: Starting new server"
