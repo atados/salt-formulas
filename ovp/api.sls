@@ -6,6 +6,7 @@ include:
   - ..common.install.nginx
   - ..common.install.certbot
   - .install.java8
+  - .install.rabbitmq
   - .install.es2
   - .install.structure
   # - .scripts.certify
