@@ -15,6 +15,7 @@ install_python:
       - python3.6
       - python-pip
       - python3-pip
+      - python3-dev
 
 virtualenv:
   pip.installed:
